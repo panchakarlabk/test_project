@@ -1,0 +1,39 @@
+import psutil
+import os
+import time
+
+def monitor_processes():
+    # Get a list of all running processes
+    running_processes = []
+    for proc in psutil.process_iter():
+        try:
+            pinfo = proc.as_dict(attrs=['pid', 'name', 'username'])
+            running_processes.append(pinfo)
+        except psutil.NoSuchProcess:
+            pass
+    return running_processes
+
+def monitor_folder(path):
+    # Get a list of all files and directories in the specified folder
+    folder_contents = os.listdir(path)
+    return folder_contents
+
+if __name__ == '__main__':
+    while True:
+        # Monitor processes every 5 seconds
+        processes = monitor_processes()
+        print("Running processes:")
+        for proc in processes:
+            print(proc)
+        print("")
+
+        # Monitor folder contents every 10 seconds
+        folder_path = "C:/Users/sorint/Desktop/code/Transmogrified"
+        folder_contents = monitor_folder(folder_path)
+        print("Folder contents:")
+        for item in folder_contents:
+            print(item)
+        print("")
+
+        time.sleep(5)
+
