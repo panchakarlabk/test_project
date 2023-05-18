@@ -19,3 +19,5 @@ while ($true) {
     MonitorFolder
     Start-Sleep -Seconds $intervalFolder
 }
+
+///added  test 
