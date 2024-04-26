@@ -11,7 +11,7 @@ def monitor_processes():
             running_processes.append(pinfo)
         except psutil.NoSuchProcess:
             pass
-    return running_processes
+    return running_processes    
 
 def monitor_folder(path):
     # Get a list of all files and directories in the specified folder
